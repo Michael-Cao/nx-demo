@@ -1,0 +1,48 @@
+<div class="module-nav-bar">
+    <soho-accordion [allowOnePane]="true" [hasPanels]="true" [moduleNav]="true" [rerouteOnLinkClick]="false">
+
+        <div class="module-nav-main accordion-section">
+            <div class="accordion-header" (click)="onClickLink('home')">
+                <a [routerLink]="['home']">
+                    <svg class="icon" focusable="false" aria-hidden="true" role="presentation">
+                        <use href="#icon-home"></use>
+                    </svg>
+                    <span>Home</span>
+                </a>
+            </div>
+
+            <div class="accordion-header" (click)="onClickLink('project')">
+                <a [routerLink]="['project']">
+                    <svg class="icon" focusable="false" aria-hidden="true" role="presentation">
+                        <use href="#icon-process"></use>
+                    </svg>
+                    <span>Project</span>
+                </a>
+            </div>
+
+            <div class="accordion-header" (click)="onClickLink('audit')">
+                <a [routerLink]="['audit']">
+                    <svg class="icon" focusable="false" aria-hidden="true" role="presentation">
+                        <use href="#icon-record"></use>
+                    </svg>
+                    <span>Audit Log</span>
+                </a>
+            </div>
+
+            <div class="accordion-header" (click)="onClickLink('settings')">
+                <a [routerLink]="['settings']">
+                    <svg class="icon" focusable="false" aria-hidden="true" role="presentation">
+                        <use href="#icon-settings"></use>
+                    </svg>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+    </soho-accordion>
+    <div id="app-menu-buttonset">
+        <button id="app_about_button" soho-button="icon" icon="info" extraIconClass="help-color" title="About"
+            (click)="onClickAbout()"></button>
+        <!-- <button id="app_help_button" soho-button="icon" icon="help" extraIconClass="help-color" title="help"
+            (click)="onClickHelp()"></button> -->
+    </div>
+</div>

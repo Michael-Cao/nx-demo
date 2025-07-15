@@ -1,0 +1,109 @@
+{
+  "name": "host-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/host-app/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/host-app",
+        "index": "apps/host-app/src/index.html",
+        "main": "apps/host-app/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/host-app/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/host-app/public"
+          },
+          {
+            "glob": "**/*",
+            "input": "./node_modules/ids-enterprise/dist/css",
+            "output": "/assets/ids-enterprise/css"
+          },
+          {
+            "glob": "**/*",
+            "input": "./node_modules/ids-enterprise/dist/js/cultures",
+            "output": "/assets/ids-enterprise/js/cultures"
+          }
+        ],
+        "styles": ["apps/host-app/src/styles.css"],
+        "scripts": [
+          "./node_modules/jquery/dist/jquery.js",
+          "./node_modules/ids-enterprise/dist/js/sohoxi.js"
+        ],
+        "customWebpackConfig": {
+          "path": "apps/host-app/webpack.config.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/host-app/webpack.prod.config.ts"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@nx/angular:module-federation-dev-server",
+      "options": {
+        "port": 4200,
+        "publicHost": "http://localhost:4200"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "host-app:build:production"
+        },
+        "development": {
+          "buildTarget": "host-app:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "host-app:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "host-app:build",
+        "port": 4200,
+        "spa": true
+      }
+    }
+  }
+}

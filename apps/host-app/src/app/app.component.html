@@ -1,0 +1,15 @@
+<soho-icons-new></soho-icons-new>
+<soho-icons-empty-new></soho-icons-empty-new>
+
+<soho-module-nav-container #moduleNavContainer [ngClass]="{ 'module-nav-container': true }">
+    <soho-module-nav #moduleNav [ngClass]="{ 'module-nav': true }" [displayMode]="this.model.displayMode"
+        [filterable]="true" [pinSections]="true">
+        <app-nav></app-nav>
+    </soho-module-nav>
+    <div class="page-container no-scroll has-module-nav-offset">
+        <app-header #appHeader (hamburgerClick)="toggleModuleNavDisplayMode($event)"></app-header>
+        <div style="margin: 15px;">
+            <router-outlet></router-outlet>
+        </div>            
+    </div>
+</soho-module-nav-container>
