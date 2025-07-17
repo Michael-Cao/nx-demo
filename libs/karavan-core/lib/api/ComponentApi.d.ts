@@ -1,0 +1,31 @@
+import { Component, ComponentHeader, ComponentProperty, SupportedComponent } from '../model/ComponentModels';
+import { CamelElement } from '../model/IntegrationDefinition';
+export declare const INTERNAL_COMPONENTS: string[];
+export declare class ComponentApi {
+    private constructor();
+    static setSupportedOnly: (supportedOnly: boolean) => void;
+    static saveSupportedComponents: (jsons: string) => void;
+    static getSupportedComponents: () => SupportedComponent[];
+    static jsonToComponent: (json: string) => Component;
+    static saveComponents: (jsons: string[], clean?: boolean) => void;
+    static saveComponent: (json: string) => void;
+    static getComponents: () => Component[];
+    static findByName: (name: string) => Component | undefined;
+    static findStepComponent: (step?: CamelElement) => Component | undefined;
+    static getComponentHeadersList: (step?: CamelElement) => ComponentHeader[];
+    static getComponentNameFromUri: (uri: string) => string | undefined;
+    static getComponentTitleFromUri: (uri: string) => string | undefined;
+    static getComponentDescriptionFromUri: (uri: string) => string | undefined;
+    static parseElementUri(def: any): any;
+    static getUriParts: (uri: string) => Map<string, string>;
+    static parseSyntax: (syntax: string) => string[];
+    static getSyntaxSeparators: (syntax: string) => string[];
+    static parseUri: (uri?: string) => string[];
+    static getUriSeparators: (uri: string) => string[];
+    static getPathParameterValue: (uri: string, pathParameter: string) => string | undefined;
+    static getComponentProperties: (componentName: string, type: 'consumer' | 'producer') => ComponentProperty[];
+    static getComponentHeaders: (componentName: string, type: 'consumer' | 'producer') => ComponentHeader[];
+    static saveBlockedComponentNames: (componentNames: string[]) => void;
+    static saveBlockedComponentName: (componentName: string, checked: boolean) => string[];
+    static getBlockedComponentNames: () => string[];
+}

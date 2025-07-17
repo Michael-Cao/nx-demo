@@ -1,0 +1,14 @@
+{
+  "name": "karavan",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/karavan/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "options": {
+        "port": 4202
+      }
+    }
+  }
+}

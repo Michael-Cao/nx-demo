@@ -31,7 +31,7 @@
             "output": "/assets/ids-enterprise/js/cultures"
           }
         ],
-        "styles": ["apps/host-app/src/styles.css"],
+        "styles": ["apps/host-app/src/styles.css", "apps/karavan/src/styles.css"],
         "scripts": [
           "./node_modules/jquery/dist/jquery.js",
           "./node_modules/ids-enterprise/dist/js/sohoxi.js"
@@ -46,7 +46,7 @@
             {
               "type": "initial",
               "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumError": "5mb"
             },
             {
               "type": "anyComponentStyle",

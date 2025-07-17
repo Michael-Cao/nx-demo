@@ -15,7 +15,8 @@ const config: ModuleFederationConfig = {
    *
    */
   remotes: [
-    ["workflow", "http://localhost:4201/remoteEntry.js"]
+    ["workflow", "http://localhost:4201/remoteEntry.js"],
+    ["karavan", "http://localhost:4202/remoteEntry.js"],
   ],
 };
 

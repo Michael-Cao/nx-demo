@@ -44,6 +44,19 @@
       ],
       "dependsOn": ["^build"],
       "cache": true
+    },
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"]
+    },
+    "@nx/webpack:webpack": {
+      "inputs": [
+        {
+          "env": "NX_MF_DEV_REMOTES"
+        }
+      ],
+      "dependsOn": ["^build"],
+      "cache": true
     }
   },
   "generators": {
@@ -68,7 +81,8 @@
       },
       "library": {
         "style": "css",
-        "linter": "none"
+        "linter": "none",
+        "unitTestRunner": "none"
       }
     }
   },
